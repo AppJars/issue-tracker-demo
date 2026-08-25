@@ -1,0 +1,47 @@
+services:
+  fake-it-smtp:
+    image: munkyboy/fakesmtp
+    ports:
+      - "2525:25"
+    volumes:
+      - ~/fake-it-smtp-emails:/var/mail
+  fake-it-smtp-web:
+    image: mjstewart/fakesmtp-web:1.3
+    ports:
+      - "60500:8080"
+    volumes:
+      - ~/fake-it-smtp-emails:/var/mail
+    environment:
+      - EMAIL_INPUT_DIR=/var/mail
+      - EMAIL_INPUT_DIR_POLL_RATE_SECONDS=10
+    depends_on:
+      - fake-it-smtp
+  redmine:
+    image: redmine:5.1.3
+    depends_on:
+      - db
+      - fake-it-smtp
+    ports:
+      - "8081:3000"
+    environment:
+      REDMINE_DB_POSTGRES: db
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: secret
+    volumes:
+      - ./files:/usr/src/redmine/files
+      - ./redmine-config/configuration.yml:/usr/src/redmine/config/configuration.yml
+
+  db:
+    image: postgres:14
+    ports:
+      - "5440:5432"
+    environment:
+      POSTGRES_USER: redmine
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: redmine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

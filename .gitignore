@@ -1,24 +1,26 @@
-# Compiled class file
-*.class
+/target/
+.idea/
+.settings
+.project
+.classpath
+.eclipse/
 
-# Log file
-*.log
+*.iml
+.DS_Store
 
-# BlueJ files
-*.ctxt
+# The following files are generated/updated by vaadin-maven-plugin
+node_modules/
+frontend/generated/
+pnpmfile.js
+vite.generated.ts
+webpack.generated.js
+/src/main/frontend/generated
+tsconfig.json
+types.d.ts
+/src/main/bundles
+package.json
+package-lock.json
+/.vaadin
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Attachments uploaded while trying the demo
+/files
