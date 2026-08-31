@@ -9,13 +9,13 @@
 
 # default configuration options for all environments
 default:
-  # Outgoing emails are handed to the fake SMTP container defined in
+  # Outgoing emails are handed to the Mailpit container defined in
   # docker-compose-redmine-postgres.yml, which captures them instead of delivering them. The
   # address below is that container's service name, so nothing leaves the Docker network.
   email_delivery:
     delivery_method: :smtp
     smtp_settings:
-      address: "fake-it-smtp"
-      port: 25
+      address: "mailpit"
+      port: 1025
       domain: "example.net"
       authentication: :none

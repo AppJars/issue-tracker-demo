@@ -160,10 +160,10 @@ These match the `db` service in `docker-compose-redmine-postgres.yml`. Change bo
 
 | Property | Value in this demo |
 |---|---|
-| `spring.mail.host` / `port` | `localhost` / `2525` |
+| `spring.mail.host` / `port` | `localhost` / `1025` |
 
-Notification emails go to the fake SMTP container instead of being delivered. Read them at
-<http://localhost:60500>.
+Notification emails go to Mailpit instead of being delivered. Read them at
+<http://localhost:8025>.
 
 ## Services started by Compose
 
@@ -171,8 +171,7 @@ Notification emails go to the fake SMTP container instead of being delivered. Re
 |---|---|---|
 | `db` | 5440 | PostgreSQL. The database the application uses |
 | `redmine` | 8081 | Creates and migrates the schema. Not part of the demo itself |
-| `fake-it-smtp` | 2525 | Captures outgoing mail instead of sending it |
-| `fake-it-smtp-web` | 60500 | Web interface for reading the captured mail |
+| `mailpit` | 1025, 8025 | Captures outgoing mail and provides a web inbox |
 
 ## License
 
