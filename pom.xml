@@ -28,7 +28,7 @@
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <appjars.issue-tracker.version>2.0.0</appjars.issue-tracker.version>
+        <appjars.issue-tracker.version>2.0.1</appjars.issue-tracker.version>
         <vaadin.version>25.2.0</vaadin.version>
         <spring.boot.version>4.0.4</spring.boot.version>
     </properties>
