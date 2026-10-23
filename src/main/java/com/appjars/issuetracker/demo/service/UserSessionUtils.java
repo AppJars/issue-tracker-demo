@@ -58,15 +58,10 @@ public class UserSessionUtils implements LoggedInUsernameProvider {
         .orElse(false);
   }
 
+  // The Issue Tracker asks for the username on every lookup of the logged-in user, so it is read
+  // from the authenticated principal instead of reloading the user.
   @Override
-  @Transactional
   public Optional<String> getLoggedInUsername() {
-    Optional<UserDetails> ud = this.get();
-
-    if (!ud.isEmpty()) {
-      return Optional.of(ud.get().getUsername());
-    } else {
-      return Optional.empty();
-    }
+    return authenticationContext.getPrincipalName();
   }
 }
